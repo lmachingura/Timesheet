@@ -1,0 +1,41 @@
+﻿@namespace TimesheetApp.Web.Components.Layout
+@inherits LayoutComponentBase
+
+@code {
+    // Optional: define a custom theme
+    private MudBlazor.MudTheme MyCustomTheme = new MudBlazor.MudTheme()
+    {
+        PaletteLight = new MudBlazor.PaletteLight()
+        {
+            Primary = MudBlazor.Colors.Blue.Default,
+            Secondary = MudBlazor.Colors.Green.Accent4,
+        }
+    };
+}
+
+<!-- Correct usage: MudThemeProvider is self-closing -->
+<MudThemeProvider Theme="@MyCustomTheme" />
+
+<MudDialogProvider />
+
+<MudSnackbarProvider>
+    <MudLayout>
+        <MudAppBar Elevation="4" Color="Color.Primary">
+            <MudText Typo="Typo.h6">Timesheet Management</MudText>
+        </MudAppBar>
+
+        <MudDrawer Open="true" Elevation="4" ClipMode="DrawerClipMode.Always">
+            <MudNavMenu>
+                <MudNavLink Href="">Home</MudNavLink>
+                <MudNavLink Href="timesheets">Timesheets</MudNavLink>
+                <MudNavLink Href="admin">Admin</MudNavLink>
+            </MudNavMenu>
+        </MudDrawer>
+
+        <MudMainContent>
+            @Body
+        </MudMainContent>
+    </MudLayout>
+</MudSnackbarProvider>
+
+
